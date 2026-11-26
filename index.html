@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Sistema de gestión y cálculo de notas definitivas">
+
+    <title>Calculadora de Notas Definitivas</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Calculadora Académica</h1>
+            <p>Gestión y cálculo de notas definitivas</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- MENSAJE DE CONEXIÓN -->
+        <div id="connection-status" class="connection-status" role="status" aria-live="polite">
+            Conectando con la base de datos...
+        </div>
+
+        <!-- INICIO DE SESIÓN -->
+        <section id="login-section" class="card">
+
+            <h2>Ingreso de estudiantes</h2>
+
+            <p>
+                Ingresa tu número de documento para acceder
+                al sistema.
+            </p>
+
+            <form id="login-form">
+
+                <label for="documento">
+                    Documento de identidad
+                </label>
+
+                <input
+                    type="text"
+                    id="documento"
+                    placeholder="Ejemplo: 123456789"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    maxlength="20"
+                    required
+                >
+
+                <button id="login-button" type="submit" disabled>
+                    Conectando...
+                </button>
+
+            </form>
+
+            <p id="login-message" class="message"
+               role="alert" aria-live="assertive"></p>
+
+        </section>
+
+
+        <!-- PANEL DEL ESTUDIANTE -->
+        <section id="dashboard-section" class="card hidden">
+
+            <div class="dashboard-header">
+
+                <div>
+                    <h2>Panel de calificaciones</h2>
+                    <p id="student-document"></p>
+                </div>
+
+                <button
+                    id="logout-button"
+                    type="button"
+                    class="secondary-button">
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+
+            <!-- CONFIGURACIÓN -->
+            <section id="configuration-section">
+
+                <h3>Configuración de evaluación</h3>
+
+                <p>
+                    Selecciona la cantidad de notas que
+                    conforman tu evaluación.
+                </p>
+
+                <label for="number-grades">
+                    Cantidad de notas
+                </label>
+
+                <input
+                    type="number"
+                    id="number-grades"
+                    min="1"
+                    max="20"
+                    step="1"
+                    placeholder="Ejemplo: 3"
+                >
+
+                <button id="generate-button" type="button">
+                    Generar campos
+                </button>
+
+            </section>
+
+
+            <!-- REGISTRO DE NOTAS -->
+            <section id="grades-section" class="hidden">
+
+                <h3>Registro de calificaciones</h3>
+
+                <form id="grades-form">
+
+                    <div id="grades-container"></div>
+
+                    <div class="percentage-summary">
+
+                        <p>
+                            Porcentaje acumulado:
+                            <strong id="percentage-total">
+                                0.00%
+                            </strong>
+                        </p>
+
+                        <p id="percentage-message" aria-live="polite">
+                            Debes completar el 100%.
+                        </p>
+
+                    </div>
+
+                    <button id="calculate-button" type="submit">
+                        Calcular nota definitiva
+                    </button>
+
+                </form>
+
+                <p id="grades-message"
+                   class="message"
+                   role="alert" aria-live="assertive"></p>
+
+            </section>
+
+
+            <!-- RESULTADO -->
+            <section id="result-section"
+                     class="result-card hidden">
+
+                <h3>Resultado académico</h3>
+
+                <p>Tu nota definitiva es:</p>
+
+                <h2 id="final-grade">0.00</h2>
+
+                <p id="academic-status"></p>
+
+                <button
+                    id="new-calculation-button"
+                    type="button">
+                    Nuevo cálculo
+                </button>
+
+            </section>
+
+
+            <!-- HISTORIAL -->
+            <section id="history-section">
+
+                <h3>Historial de calificaciones</h3>
+
+                <div id="history-container">
+                    <p>Cargando historial...</p>
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <p>Software de Cálculo de Notas Definitivas</p>
+
+        <p>HTML5 | CSS3 | JavaScript | IndexedDB</p>
+
+    </footer>
+
+
+    <!-- MÓDULO PRINCIPAL -->
+    <script type="module" src="./js/app.js"></script>
+
+</body>
+</html>
